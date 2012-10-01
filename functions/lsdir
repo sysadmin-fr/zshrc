@@ -1,0 +1,10 @@
+# -*- shell-script -*-
+# function lsdir {
+# do a du -hs on each dir on current path
+
+for dir in *; do;
+    if [[ -d $dir ]]; then
+	du --separate-dirs --summarize --dereference $dir 2>/dev/null
+    fi
+done
+# }

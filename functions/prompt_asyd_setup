@@ -1,0 +1,66 @@
+# -*- shell-script -*-
+# asyd's prompt:
+# <date> (user~host) path
+
+#Chargement des couleurs
+autoload -U colors
+colors
+
+# permit parameter expansion, command substitution and arithmetic expansion 
+# in prompt
+setopt prompt_subst
+setopt transient_rprompt	# Remove Rprompt after accepting command
+
+precmd () {
+    local buffer load date_format LOADAVG MEM PATHINFO
+    local date host cpath end stats
+    local date_color user_color host_color path_color status_color
+
+    # Setup colors using style:
+
+    zstyle -s :prompt:asyd date-color date_color
+    date_color=${date_color:-'white'}
+
+    zstyle -s :prompt:asyd user-color user_color
+    user_color=${user_color:-'green'}
+
+    zstyle -s :prompt:asyd host-color host_color
+    host_color=${host_color:-'yellow'}
+
+    zstyle -s :prompt:asyd path-color path_color
+    path_color=${path_color:-'red'}
+
+    zstyle -s :prompt:asyd status-color status_color
+    status_color=${status_color:-'red'}
+    
+    # Format
+    date_format="%H:%M"
+
+    load=(${$(< /proc/loadavg)})
+    LOADAVG="$load[1] $load[2]"
+    buffer=(${$(free)})
+    MEM="$((100 * $buffer[16] / $buffer[8]))%%"
+    if [[ $buffer[19] != 0 ]]; then
+        MEM="$MEM $((100 * $buffer[20] / $buffer[19]))%%"
+    fi
+    if [ -d $PWD/.svn ] ; then
+        PATHINFO="(svn):$PWD"
+    else
+        PATHINFO=$PWD
+    fi
+
+    date="%{$fg[$date_color]%}%D{$date_format}"
+    if [ ! -z $chrootname ]; then
+        host="%{$fg[$user_color]%}%n:${chrootname}%{$reset_color%}~%{$fg[$host_color]%}%m"
+    else
+	host="%{$fg[$user_color]%}%n%{$reset_color%}~%{$fg[$host_color]%}%m"
+    fi
+
+    cpath="%{$fg[$path_color]%}%/%b"
+    end="%{$reset_color%}"
+    stats="%{$fg[$status_color]%}[$LOADAVG - $MEM]"
+
+    PROMPT="$date$end ($host$end) $cpath
+$end%% "
+    RPROMPT="$stats%{$reset_color%}"
+}

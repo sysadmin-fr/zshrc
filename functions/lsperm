@@ -1,0 +1,16 @@
+# -*- shell-script -*-
+# function lsperm () {
+#  Display permission of a file in octal
+setopt local_options octal_zeroes
+local modes file mode
+zstat +mode -A modes $*
+
+while [[ $# -gt 0 ]]; do
+    file=$1
+    mode=$(($modes[1] & 07777))
+
+    printf "%s -> %04o\n" $file $mode
+    shift
+    shift modes
+done
+# }

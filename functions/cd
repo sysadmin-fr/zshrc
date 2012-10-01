@@ -1,0 +1,16 @@
+# -*- shell-script -*-
+# function cd {
+#  Allow to "cd /path/to/file"
+#  FIXME: doesn't handle option to builtin cd: [-qsLP]
+
+if [[ -z $2 ]]; then
+    if [[ -f $1 ]]; then
+        # strip the file part of the argument
+	builtin cd $1:h
+    else
+	builtin cd $1
+    fi
+else
+    builtin cd $*
+fi
+# }
