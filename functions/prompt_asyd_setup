@@ -6,11 +6,6 @@
 autoload -U colors
 colors
 
-# permit parameter expansion, command substitution and arithmetic expansion 
-# in prompt
-setopt prompt_subst
-setopt transient_rprompt	# Remove Rprompt after accepting command
-
 precmd () {
     local buffer load date_format LOADAVG MEM PATHINFO
     local date host cpath end stats
@@ -50,8 +45,8 @@ precmd () {
     fi
 
     date="%{$fg[$date_color]%}%D{$date_format}"
-    if [ ! -z $chrootname ]; then
-        host="%{$fg[$user_color]%}%n:${chrootname}%{$reset_color%}~%{$fg[$host_color]%}%m"
+    if [ ! -z $instancename ]; then
+        host="%{$fg[$user_color]%}%n%{$reset_color%}~%{$fg[$host_color]%}%m:${instancename}"
     else
 	host="%{$fg[$user_color]%}%n%{$reset_color%}~%{$fg[$host_color]%}%m"
     fi
