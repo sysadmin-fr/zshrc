@@ -43,11 +43,13 @@ if [[ -x $(which rdesktop) ]] alias rdesktop="rdesktop -u Administrator -a 8 -g 
 # cron / fcronb
 if [[ -x $(which -p fcron) ]] alias crontab="fcrontab"
 
+alias findnosecure="find / -perm +2000 -o -perm +4000 -print 2>/dev/null"
+
 alias gnus='emacs -f gnus -nw'
 
 # Suffixes aliases:
 alias -s log="tail -f"		# tail log files
-alias -s conf="vim"		# edit config files
+alias -s conf='$EDITOR'		# edit config files
 
 # display certs info
 alias -s pem="openssl x509 -text -noout -in"
