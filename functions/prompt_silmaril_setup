@@ -34,21 +34,10 @@ fi
 zstyle ':vcs_info:*' formats "${user_color}(${end}%b${user_color})" "${user_color}<[${end}%7.7i%m %c${user_color}]>${end}"
 
 #prompt principal
-PROMPT="${user_color}-=[${end}${userbg_color}%n${end}@%m${user_color}]=%(?..<${end}Failed %?${user_color}>=)(${end}%9(c!...!)%8c${user_color})\${vcs_info_msg_0_}%(#.#.>) $end"    # default prompt
+#PROMPT="${user_color}-=[${end}${userbg_color}%n${end}@%m${user_color}]=%(?..<${end}Failed %?${user_color}>=)(${end}%9(c!...!)%8c${user_color})\${vcs_info_msg_0_}%(#.#.>) $end"    # default prompt
 
 #prompt de droite sur la ligne principale
-RPROMPT="${user_color}<(${end}%*${user_color})>${end}"
-
-PS1='[$(date +%H:%M)][\[\e[$_col;37;1m\]\u\[\e[m\]@\[\e[34;1m\]\h\[\e[m\]:\[\e[1m\]\w]'
-if [ $UID -eq 0 ]; then
-    PS1="$PS1#"
-else
-    PS1="$PS1$"
-fi
-PS1="$PS1\[\e[m\] "
-export PS1
-
-
+#RPROMPT="${user_color}<(${end}%*${user_color})>${end}"
 
 PROMPT="${user_color}[${end}%*${user_color}][${end}${userbg_color}%n${end}@${user_color}%m${end}:%20<...<%~%<<\${vcs_info_msg_0_}]${end}%B%(!.#.$)%b "
 
