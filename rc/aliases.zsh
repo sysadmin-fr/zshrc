@@ -57,4 +57,4 @@ alias -s req="openssl req -text -in"
 
 alias date-rfc822="date '+%a, %d %b %Y %X %z'"
 
-return;
+return

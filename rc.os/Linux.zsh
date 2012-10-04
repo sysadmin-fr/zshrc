@@ -21,4 +21,4 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # Centos / Redhat
 # [ -r ... ] && source "$cur/Redhat.zsh"
 
-return;
+return

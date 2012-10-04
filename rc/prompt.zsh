@@ -9,4 +9,4 @@ setopt prompt_subst
 setopt transient_rprompt		# Auto-hide rprompt after before executing cmd
 prompt asyd
 
-return;
+return

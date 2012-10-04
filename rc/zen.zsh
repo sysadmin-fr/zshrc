@@ -14,4 +14,4 @@ if [[ -r $HOME/.zen ]] ; then
     bindkey "^[f" insert-root-prefix
 fi
 
-return;
+return

@@ -10,4 +10,4 @@ autoload -U lsperm
 autoload -U lsdir
 autoload -U cd
 
-return;
+return

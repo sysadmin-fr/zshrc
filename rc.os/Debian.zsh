@@ -9,4 +9,4 @@ compdef _hosts __debian_upgrade
 # Add name of (Debian) SCHROOT if exists
 [ -r /etc/debian_chroot ] && instancename=${$(< /etc/debian_chroot)//-*}
 
-return;
+return

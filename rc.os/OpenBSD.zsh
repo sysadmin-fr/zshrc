@@ -8,4 +8,4 @@ if [ -x $(which gls) ] ; then
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
 
-return;
+return

@@ -17,4 +17,4 @@ compctl -C -c + -K compctl_rehash + -c
 #	rehash
 #}
 
-return;
+return

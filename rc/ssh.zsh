@@ -7,4 +7,4 @@ if [[ "$USER" != "root" ]]; then
     ssh_key_manage
 fi
 
-return;
+return

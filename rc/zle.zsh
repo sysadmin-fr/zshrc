@@ -10,4 +10,4 @@ bindkey '^[[1;5C' vi-forward-word
 
 bindkey '^U' backward-kill-line		# ctrl-U
 
-return;
+return

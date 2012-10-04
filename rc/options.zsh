@@ -24,4 +24,4 @@ setopt noclobber                # Don't erase file with >, use >| (overwrite) or
 # Set default umask to 027
 umask 027
 
-return;
+return

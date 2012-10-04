@@ -53,4 +53,4 @@ compdef _hosts mtr
 compdef _hosts rdesktop
 compdef _gnu_generic sort
 
-return;
+return
