@@ -6,7 +6,7 @@ local cur=$(dirname $0)
 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
-alias ls='ls --color=auto'
+alias ls='ls --color=auto --human-readable --group-directories-first --classify'
 
 # Setup custom colors for files extensions
 eval `dircolors $ZSH_CONFIG_BASE/misc/dircolors.rc`
