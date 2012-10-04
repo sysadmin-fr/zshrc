@@ -1,0 +1,45 @@
+# -*- shell-script -*-
+# Based on bapt's prompt, adding vcs support
+
+#Chargement des couleurs
+autoload -U colors
+colors
+
+# This needs prompt_subst set So:
+setopt prompt_subst
+
+#definition des couleurs
+user_color="%{$fg[blue]%}"
+root_color="%{$fg[red]%}"
+end="%{$reset_color%}"
+
+#definition de la couleur principale suivant l'utilisateur
+[[ "$LOGNAME" == "root" ]] && user_color=$root_color
+
+if [[ $UID -eq `id -u $LOGNAME` ]]; then
+    userbg_color=
+else
+    userbg_color="%{$bg[blue]%}"
+fi
+
+# vcs info format string
+#  %i: hash
+#  %b: branch
+#  %c: staged
+#  %m: misc#
+#zstyle ':vcs_info:git*' formats "=(${end}%s${user_color})=[${end}%7.7i %b${user_color}]={${end}%c%m${user_color}}"
+zstyle ':vcs_info:*' formats "=[${end}%7.7i%m %b%c${user_color}]"
+
+#prompt principal
+PROMPT="${user_color}-=[${end}${userbg_color}%n${end}@%m${user_color}]=%(?..<${end}Failed %?${user_color}>=)(${end}%9(c!...!)%8c${user_color})\${vcs_info_msg_0_}%(#.#.>) $end"    # default prompt
+
+#prompt de droite sur la ligne principale
+RPROMPT="${user_color}<(${end}%*${user_color})>${end}"
+
+#prompt en cas de commande non finie
+PROMPT2="Et la suite ? %_ >"
+PROMPT3="Selection ?"
+PROMPT4="Debug > "
+
+#prompt en cas de correction
+SPROMPT="Hep ${LOGNAME}, tu voulais dire %U%r%u ? ([y]es,[n]o,[e]dit,[a]bort)"
