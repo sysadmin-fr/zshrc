@@ -14,10 +14,11 @@ root_color="%{$fg[red]%}"
 end="%{$reset_color%}"
 
 #definition de la couleur de fond suivant l'utilisateur
+eltc=$user_color
 userbg_color=
 if [[ $UID -eq 0 ]]; then
-    userbr_color=$root_color
-    user_color=$root_color
+    userbg_color=$root_color
+    eltc=$root_color
 elif [[ $UID -ne `id -u $LOGNAME` ]]; then
     userbg_color="%{$bg[blue]%}"
 fi
@@ -27,26 +28,26 @@ fi
 #  %b: branch
 #  %c: staged
 #  %m: misc#
-#zstyle ':vcs_info:git*' formats "=(${end}%s${user_color})=[${end}%7.7i %b${user_color}]={${end}%c%m${user_color}}"
-#zstyle ':vcs_info:*' formats "=[${end}%7.7i%m %b%c${user_color}]" ""
-zstyle ':vcs_info:*' formats "${user_color}(${end}%b${user_color})" "${user_color}<[${end}%7.7i%m %c${user_color}]>${end}"
-zstyle ':vcs_info:*' actionformats "${user_color}(${end}%b|%a${user_color})" "${user_color}<[${end}%7.7i%m %c${user_color}]>${end}"
+#zstyle ':vcs_info:git*' formats "=(${end}%s${eltc})=[${end}%7.7i %b${eltc}]={${end}%c%m${eltc}}"
+#zstyle ':vcs_info:*' formats "=[${end}%7.7i%m %b%c${eltc}]" ""
+zstyle ':vcs_info:*' formats "${eltc}(${end}%b${eltc})" "${eltc}<${end}%7.7i%m %c${eltc}>${end}"
+zstyle ':vcs_info:*' actionformats "${eltc}(${end}%b|%a${eltc})" "${eltc}<${end}%7.7i%m %c${eltc}>${end}"
 
 #prompt principal
-#PROMPT="${user_color}-=[${end}${userbg_color}%n${end}@%m${user_color}]=%(?..<${end}Failed %?${user_color}>=)(${end}%9(c!...!)%8c${user_color})\${vcs_info_msg_0_}%(#.#.>) $end"    # default prompt
+#PROMPT="${eltc}-=[${end}${userbg_color}%n${end}@%m${eltc}]=%(?..<${end}Failed %?${eltc}>=)(${end}%9(c!...!)%8c${eltc})\${vcs_info_msg_0_}%(#.#.>) $end"    # default prompt
 
 #prompt de droite sur la ligne principale
-#RPROMPT="${user_color}<(${end}%*${user_color})>${end}"
+#RPROMPT="${eltc}<(${end}%*${eltc})>${end}"
 
-PROMPT="${user_color}[${end}%*${user_color}][${end}${userbg_color}%n${end}@${user_color}%m${end}:%20<...<%~%<<\${vcs_info_msg_0_}${user_color}]${end}%B%(!.#.$)%b "
+PROMPT="${eltc}[${end}%*${eltc}][${end}${userbg_color}%n${end}@${eltc}%m${end}:%20<...<%~%<<\${vcs_info_msg_0_}${eltc}]${end}%B%(!.#.$)%b "
 
-#RPROMPT="%(?..<${end}Failed %?${user_color}>=)%(?..<${end}<\${vcs_info_msg_1_}${user_color}>)"
-RPROMPT="%(?..${user_color}<${root_color}Failed %?${user_color}>=)\${vcs_info_msg_1_}"
+#RPROMPT="%(?..<${end}Failed %?${eltc}>=)%(?..<${end}<\y${vcs_info_msg_1_}${eltc}>)"
+RPROMPT="%(?..${eltc}<${root_color}Failed %?${eltc}>=)\${vcs_info_msg_1_}"
 
-#(${end}%9(c!...!)%8c${user_color})\${vcs_info_msg_0_}%(#.#.>) $end"    # default prompt
+#(${end}%9(c!...!)%8c${eltc})\${vcs_info_msg_0_}%(#.#.>) $end"    # default prompt
 
 #prompt de droite sur la ligne principale
-#RPROMPT="${user_color}<(${end}%*${user_color})>${end}"
+#RPROMPT="${eltc}<(${end}%*${eltc})>${end}"
 
 #prompt en cas de commande non finie
 PROMPT2="Et la suite ? %_ >"
