@@ -9,6 +9,7 @@ autoload -Uz vcs_info
 # below). This comes with a speed penalty for bigger repositories.
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' get-revision true
+zstyle ':vcs_info:*' enable git cvs svn bzr hg
 
 # Only run vcs_info when necessary to speed up the prompt
 # Extracted from vcs_info examples.
@@ -58,6 +59,10 @@ add-zsh-hook chpwd vcs_chpwd
 ### git: Show marker (T) if there are untracked files in repository
 # Make sure you have added staged to your 'formats':  %c
 +vi-git-untracked(){
+    # Only one run per prompt
+    [[ $user_data[git-untracked] == 1 ]] && return
+    user_data[git-untracked]=1
+
     if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
         git status --porcelain | grep '??' &> /dev/null ; then
         # This will show the marker if there are any untracked files in repo.
@@ -76,6 +81,10 @@ add-zsh-hook chpwd vcs_chpwd
 function +vi-git-st() {
     local ahead behind
     local -a gitstatus
+
+    # Only one run per prompt
+    [[ $user_data[git-st] == 1 ]] && return
+    user_data[git-st]=1
 
     # for git prior to 1.7
     #ahead=$(git rev-list origin/${hook_com[branch]}..HEAD | wc -l)
