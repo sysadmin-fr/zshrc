@@ -2,13 +2,17 @@
 # Define special environment variables
 
 # Default text editor
-export EDITOR=vi
-export VISUAL=vi
+if [ -x $(which -p emacs) ]; then 
+	export EDITOR=emacs
+	export VISUAL=emacs
+else
+	export EDITOR=vi
+fi
 
 # less
 if [ -x $(which less) ]; then
 	export PAGER=less
-	export LESS="-ir"
+	export LESS="-MQir"
 	export LESSOPEN="| /usr/bin/lesspipe %s"
 	export LESSCLOSE="/usr/bin/lesspipe %s %s"
 fi
@@ -26,5 +30,6 @@ export PATH
 
 # Remove '/' from included word chars
 WORDCHARS="${WORDCHARS:s#/#}"
+WORDCHARS="${WORDCHARS:s#=#}"
 
 return
