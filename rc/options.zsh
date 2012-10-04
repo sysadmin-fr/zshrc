@@ -5,7 +5,8 @@
 setopt nohup                    # and don't kill them, either
 setopt printexitvalue           # show the exit-value if > 0
 
-setopt interactivecomments      # escape commands so i can use them later
+setopt interactivecomments      # Allow comments even in interactive shells.
+
 
 # Filename matching
 setopt extended_glob            # in order to use #, ~ and ^ for filename generation
@@ -18,7 +19,9 @@ export DIRSTACKSIZE=20		# Number of directory to keep in the stack
 
 setopt correct                  # try to correct the spelling if possible
 setopt rmstarwait               # wait 10 seconds before querying for a rm which contains a *
-setopt clobber                  # allow >> on a inexistant file and > on an existing file
+setopt noclobber                # Don't erase file with >, use >| (overwrite) or >> (append) instead
 
 # Set default umask to 027
 umask 027
+
+return;
