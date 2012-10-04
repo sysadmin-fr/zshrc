@@ -17,8 +17,7 @@ end="%{$reset_color%}"
 eltc=$user_color
 userbg_color=
 if [[ $UID -eq 0 ]]; then
-    userbg_color=$root_color
-    eltc=$root_color
+    userbg_color="%{$bg[red]%}"
 elif [[ $UID -ne `id -u $LOGNAME` ]]; then
     userbg_color="%{$bg[blue]%}"
 fi
