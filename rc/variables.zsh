@@ -1,14 +1,9 @@
 # -*- shell-script -*-
 # Define special environment variables
 
-# vi/vim
-if [ -x $(which -p vim) ]; then 
-	alias vi="vim"
-	export EDITOR=vim
-	export VISUAL=vim
-else
-	export EDITOR=vi
-fi
+# Default text editor
+export EDITOR=vi
+export VISUAL=vi
 
 # less
 if [ -x $(which less) ]; then
