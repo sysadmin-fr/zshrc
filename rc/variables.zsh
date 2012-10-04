@@ -6,19 +6,19 @@ export EDITOR=vi
 export VISUAL=vi
 
 # less
-if [ -x $(which less) ]; then
+if [[ -x $(which less) ]]; then
 	export PAGER=less
 	export LESS="-ir"
 	export LESSOPEN="| /usr/bin/lesspipe %s"
 	export LESSCLOSE="/usr/bin/lesspipe %s %s"
 fi
 
-[ -d /usr/local/info ] && export INFO_PATH="$INFO_PATH;/usr/local/info"
+if [[ -d /usr/local/info ]] export INFO_PATH="$INFO_PATH;/usr/local/info"
 
 PATH=$PATH:~/bin:/usr/local/bin
 
 for tool in $HOME/tools/*(-/DN) ; do
-	if [ -d $tool/bin ] ; then
+	if [[ -d $tool/bin ]] ; then
 		PATH=$PATH:$tool/bin
 	fi
 done
