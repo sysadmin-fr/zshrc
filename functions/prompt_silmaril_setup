@@ -13,14 +13,12 @@ user_color="%{$fg[blue]%}"
 root_color="%{$fg[red]%}"
 end="%{$reset_color%}"
 
-#definition de la couleur principale suivant l'utilisateur
-if [[ "$LOGNAME" == "root" ]]; then
+#definition de la couleur de fond suivant l'utilisateur
+userbg_color=
+if [[ $UID -eq 0 ]]; then
+    userbr_color=$root_color
     user_color=$root_color
-fi
-
-if [[ $UID -eq `id -u $LOGNAME` ]]; then
-    userbg_color=
-else
+elif [[ $UID -ne `id -u $LOGNAME` ]]; then
     userbg_color="%{$bg[blue]%}"
 fi
 
@@ -40,7 +38,7 @@ zstyle ':vcs_info:*' actionformats "${user_color}(${end}%b|%a${user_color})" "${
 #prompt de droite sur la ligne principale
 #RPROMPT="${user_color}<(${end}%*${user_color})>${end}"
 
-PROMPT="${user_color}[${end}%*${user_color}][${end}${userbg_color}%n${end}@${user_color}%m${end}:%20<...<%~%<<\${vcs_info_msg_0_}]${end}%B%(!.#.$)%b "
+PROMPT="${user_color}[${end}%*${user_color}][${end}${userbg_color}%n${end}@${user_color}%m${end}:%20<...<%~%<<\${vcs_info_msg_0_}${user_color}]${end}%B%(!.#.$)%b "
 
 #RPROMPT="%(?..<${end}Failed %?${user_color}>=)%(?..<${end}<\${vcs_info_msg_1_}${user_color}>)"
 RPROMPT="%(?..${user_color}<${root_color}Failed %?${user_color}>=)\${vcs_info_msg_1_}"
