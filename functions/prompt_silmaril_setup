@@ -8,13 +8,15 @@ colors
 # This needs prompt_subst set So:
 setopt prompt_subst
 
-#definition des couleurs
+# definition des couleurs
 user_color="%{$fg[blue]%}"
 root_color="%{$fg[red]%}"
 end="%{$reset_color%}"
 
 #definition de la couleur principale suivant l'utilisateur
-[[ "$LOGNAME" == "root" ]] && user_color=$root_color
+if [[ "$LOGNAME" == "root" ]]; then
+    user_color=$root_color
+fi
 
 if [[ $UID -eq `id -u $LOGNAME` ]]; then
     userbg_color=
@@ -28,13 +30,35 @@ fi
 #  %c: staged
 #  %m: misc#
 #zstyle ':vcs_info:git*' formats "=(${end}%s${user_color})=[${end}%7.7i %b${user_color}]={${end}%c%m${user_color}}"
-zstyle ':vcs_info:*' formats "=[${end}%7.7i%m %b%c${user_color}]"
+#zstyle ':vcs_info:*' formats "=[${end}%7.7i%m %b%c${user_color}]" ""
+zstyle ':vcs_info:*' formats "${user_color}(${end}%b${user_color})" "${user_color}<[${end}%7.7i%m %c${user_color}]>${end}"
 
 #prompt principal
 PROMPT="${user_color}-=[${end}${userbg_color}%n${end}@%m${user_color}]=%(?..<${end}Failed %?${user_color}>=)(${end}%9(c!...!)%8c${user_color})\${vcs_info_msg_0_}%(#.#.>) $end"    # default prompt
 
 #prompt de droite sur la ligne principale
 RPROMPT="${user_color}<(${end}%*${user_color})>${end}"
+
+PS1='[$(date +%H:%M)][\[\e[$_col;37;1m\]\u\[\e[m\]@\[\e[34;1m\]\h\[\e[m\]:\[\e[1m\]\w]'
+if [ $UID -eq 0 ]; then
+    PS1="$PS1#"
+else
+    PS1="$PS1$"
+fi
+PS1="$PS1\[\e[m\] "
+export PS1
+
+
+
+PROMPT="${user_color}[${end}%*${user_color}][${end}${userbg_color}%n${end}@${user_color}%m${end}:%20<...<%~%<<\${vcs_info_msg_0_}]${end}%B%(!.#.$)%b "
+
+#RPROMPT="%(?..<${end}Failed %?${user_color}>=)%(?..<${end}<\${vcs_info_msg_1_}${user_color}>)"
+RPROMPT="%(?..${user_color}<${root_color}Failed %?${user_color}>=)\${vcs_info_msg_1_}"
+
+#(${end}%9(c!...!)%8c${user_color})\${vcs_info_msg_0_}%(#.#.>) $end"    # default prompt
+
+#prompt de droite sur la ligne principale
+#RPROMPT="${user_color}<(${end}%*${user_color})>${end}"
 
 #prompt en cas de commande non finie
 PROMPT2="Et la suite ? %_ >"
