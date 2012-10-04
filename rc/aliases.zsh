@@ -46,7 +46,7 @@ if [[ -x $(which etags) ]] alias etags="etags --members"
 if [[ -x $(which rdesktop) ]] alias rdesktop="rdesktop -u Administrator -a 8 -g 1024x768 -k fr"
 
 # cron / fcronb
-if [[ -x $(which -p fcron) ]] alias crontab="fcrontab"
+if [[ -x $(which fcron) ]] alias crontab="fcrontab"
 
 alias findnosecure="find / -perm +2000 -o -perm +4000 -print 2>/dev/null"
 

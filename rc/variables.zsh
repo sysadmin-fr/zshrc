@@ -2,7 +2,7 @@
 # Define special environment variables
 
 # Default text editor
-if [ -x $(which -p emacs) ]; then 
+if [[ -x $(which emacs) ]]; then 
 	export EDITOR=emacs
 	export VISUAL=emacs
 else
