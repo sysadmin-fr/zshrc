@@ -9,3 +9,5 @@ zmodload zsh/stat
 
 # Define strftime, EPOCHSECONDS
 zmodload zsh/datetime
+
+return;

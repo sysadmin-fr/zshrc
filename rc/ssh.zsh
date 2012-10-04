@@ -6,3 +6,5 @@ if [[ "$USER" != "root" ]]; then
     autoload -U ssh_key_manage
     ssh_key_manage
 fi
+
+return;

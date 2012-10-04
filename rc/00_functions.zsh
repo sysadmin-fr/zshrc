@@ -9,3 +9,5 @@ autoload -U __set_title
 autoload -U lsperm
 autoload -U lsdir
 autoload -U cd
+
+return;

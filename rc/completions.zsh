@@ -9,8 +9,11 @@ setopt always_to_end            # move to cursor to the end after completion
 # Completion tweak:
 zstyle ':completion:*' completer _complete _prefix _approximate
 zstyle ':completion:*:complete:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' ignore-parents parent pwd
 zstyle ':completion:*' max-errors 1
 zstyle ':completion:*' use-ip true
+zstyle ':completion:*' use-cache true
+zstyle ':completion:*' cache-path $ZSH_CACHE_BASE	# Cache path
 
 # Use 'ps -au$USER' for fetch user process list
 zstyle ':completion:*:processes' command 'ps -au$USER'
@@ -18,18 +21,12 @@ zstyle ':completion:*:processes' command 'ps -au$USER'
 # Verbose mode
 zstyle ':completion:*:descriptions' format '%B%d%b'
 
-# Use cache
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path $ZSH_CACHE_BASE	# Cache path
-
 # prevent CVS files/directory completion
 if [[ -x $(which cvs) ]]
 then
     zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS'
     zstyle ':completion:*:cd:*' ignored-patterns '(*/)#CVS'
 fi
-
-zstyle ':completion:*' ignore-parents parent pwd
 
 zstyle ':completion:*:*:zless:*' file-patterns '*(-/):directories *.gz:all-files'
 zstyle ':completion:*:*:gqview:*' file-patterns '*(-/):directories :(#i)*.(png|jpeg|jpg):all-files'
@@ -55,3 +52,5 @@ compinit -d $ZSH_CACHE_BASE/zcompdump
 compdef _hosts mtr
 compdef _hosts rdesktop
 compdef _gnu_generic sort
+
+return;

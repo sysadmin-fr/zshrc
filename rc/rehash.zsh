@@ -16,3 +16,5 @@ compctl -C -c + -K compctl_rehash + -c
 #function cmd-comp {
 #	rehash
 #}
+
+return;

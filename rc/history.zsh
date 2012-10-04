@@ -15,3 +15,5 @@ if [[ ! -d ${histdir} ]] mkdir -p ${histdir}
 
 HISTSIZE=1000000
 SAVEHIST=1000000
+
+return;

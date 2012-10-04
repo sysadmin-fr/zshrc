@@ -7,3 +7,5 @@ zfinit
 
 # email address for anonymous ftp
 EMAIL_ADDR=enjoy.zsh@foo.bar
+
+return;

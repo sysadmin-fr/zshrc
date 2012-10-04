@@ -13,3 +13,5 @@ function title_preexec() {
 
 add-zsh-hook precmd title_precmd
 add-zsh-hook preexec title_preexec
+
+return;

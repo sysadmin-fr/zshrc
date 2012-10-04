@@ -31,3 +31,5 @@ export PATH
 
 # Remove '/' from included word chars
 WORDCHARS="${WORDCHARS:s#/#}"
+
+return;

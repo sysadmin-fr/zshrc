@@ -7,3 +7,5 @@ if [ -x $(which gls) ] ; then
     alias ls='gls --color'
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
+
+return;
