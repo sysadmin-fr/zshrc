@@ -14,6 +14,11 @@ alias lh="ls -lh"
 alias lsd='ls -ld *(-/DN)'
 alias df="df -h"
 
+alias rsync="rsync -v --progress"
+
+alias chmod="chmod --changes --preserve-root"
+alias chown="chown --changes --preserve-root"
+
 # zsh correct clea to flea
 if [[ -x $(which flea) ]] alias clea="clear"
 
@@ -50,6 +55,14 @@ alias gnus='emacs -f gnus -nw'
 # Suffixes aliases:
 alias -s log="tail -f"		# tail log files
 alias -s conf='$EDITOR'		# edit config files
+
+if [[ -x $(which colordiff) ]]; then
+    alias diff="colordiff -Nuar"
+else
+    alias diff="diff -Nuar"
+fi
+
+alias help='run-help'
 
 # display certs info
 alias -s pem="openssl x509 -text -noout -in"
