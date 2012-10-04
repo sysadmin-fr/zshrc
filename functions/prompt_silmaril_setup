@@ -32,6 +32,7 @@ fi
 #zstyle ':vcs_info:git*' formats "=(${end}%s${user_color})=[${end}%7.7i %b${user_color}]={${end}%c%m${user_color}}"
 #zstyle ':vcs_info:*' formats "=[${end}%7.7i%m %b%c${user_color}]" ""
 zstyle ':vcs_info:*' formats "${user_color}(${end}%b${user_color})" "${user_color}<[${end}%7.7i%m %c${user_color}]>${end}"
+zstyle ':vcs_info:*' actionformats "${user_color}(${end}%b|%a${user_color})" "${user_color}<[${end}%7.7i%m %c${user_color}]>${end}"
 
 #prompt principal
 #PROMPT="${user_color}-=[${end}${userbg_color}%n${end}@%m${user_color}]=%(?..<${end}Failed %?${user_color}>=)(${end}%9(c!...!)%8c${user_color})\${vcs_info_msg_0_}%(#.#.>) $end"    # default prompt
