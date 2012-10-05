@@ -5,7 +5,7 @@ setopt nobeep                   # i hate beeps
 
 # Background/sub processes
 setopt nohup                    # and don't kill them, either
-setopt printexitvalue           # show the exit-value if > 0
+#setopt printexitvalue           # show the exit-value if > 0
 
 setopt interactivecomments      # Allow comments even in interactive shells.
 

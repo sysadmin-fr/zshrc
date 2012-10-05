@@ -5,9 +5,6 @@
 autoload -U colors
 colors
 
-# This needs prompt_subst set So:
-setopt prompt_subst
-
 # definition des couleurs
 user_color="%{$fg[blue]%}"
 root_color="%{$fg[red]%}"
@@ -27,26 +24,13 @@ fi
 #  %b: branch
 #  %c: staged
 #  %m: misc#
-#zstyle ':vcs_info:git*' formats "=(${end}%s${eltc})=[${end}%7.7i %b${eltc}]={${end}%c%m${eltc}}"
-#zstyle ':vcs_info:*' formats "=[${end}%7.7i%m %b%c${eltc}]" ""
 zstyle ':vcs_info:*' formats "${eltc}(${end}%b${eltc})" "${eltc}<${end}%7.7i%m %c${eltc}>${end}"
 zstyle ':vcs_info:*' actionformats "${eltc}(${end}%b|%a${eltc})" "${eltc}<${end}%7.7i%m %c${eltc}>${end}"
 
-#prompt principal
-#PROMPT="${eltc}-=[${end}${userbg_color}%n${end}@%m${eltc}]=%(?..<${end}Failed %?${eltc}>=)(${end}%9(c!...!)%8c${eltc})\${vcs_info_msg_0_}%(#.#.>) $end"    # default prompt
 
-#prompt de droite sur la ligne principale
-#RPROMPT="${eltc}<(${end}%*${eltc})>${end}"
+PROMPT="${eltc}[${end}%D{%H:%M:%S}${eltc}][${end}${userbg_color}%n${end}@${eltc}%m${end}:%20<...<%~%<<\${vcs_info_msg_0_}${eltc}]${end}%B%(!.#.$)%b "
 
-PROMPT="${eltc}[${end}%*${eltc}][${end}${userbg_color}%n${end}@${eltc}%m${end}:%20<...<%~%<<\${vcs_info_msg_0_}${eltc}]${end}%B%(!.#.$)%b "
-
-#RPROMPT="%(?..<${end}Failed %?${eltc}>=)%(?..<${end}<\y${vcs_info_msg_1_}${eltc}>)"
-RPROMPT="%(?..${eltc}<${root_color}Failed %?${eltc}>=)\${vcs_info_msg_1_}"
-
-#(${end}%9(c!...!)%8c${eltc})\${vcs_info_msg_0_}%(#.#.>) $end"    # default prompt
-
-#prompt de droite sur la ligne principale
-#RPROMPT="${eltc}<(${end}%*${eltc})>${end}"
+RPROMPT="%(?..${eltc}<${root_color}Failed %?${eltc}>${end})\${vcs_info_msg_1_}"
 
 #prompt en cas de commande non finie
 PROMPT2="Et la suite ? %_ >"
