@@ -1,5 +1,5 @@
 # -*- shell-script -*-
-# Based on bapt's prompt, adding vcs support
+# Simple prompt, with constraint size and vcs support
 
 #Chargement des couleurs
 autoload -U colors
@@ -11,12 +11,12 @@ root_color="%{$fg[red]%}"
 end="%{$reset_color%}"
 
 #definition de la couleur de fond suivant l'utilisateur
-eltc=$user_color
-userbg_color=
+eltc="%B$user_color"
+userbg_color="%B"
 if [[ $UID -eq 0 ]]; then
-    userbg_color="%{$bg[red]%}"
+    userbg_color="%B%{$bg[red]%}"
 elif [[ $UID -ne `id -u $LOGNAME` ]]; then
-    userbg_color="%{$bg[blue]%}"
+    userbg_color="%B%{$bg[blue]%}"
 fi
 
 # vcs info format string
@@ -28,7 +28,7 @@ zstyle ':vcs_info:*' formats "${eltc}(${end}%b${eltc})" "${eltc}<${end}%7.7i%m %
 zstyle ':vcs_info:*' actionformats "${eltc}(${end}%b|%a${eltc})" "${eltc}<${end}%7.7i%m %c${eltc}>${end}"
 
 
-PROMPT="${eltc}[${end}%D{%H:%M:%S}${eltc}][${end}${userbg_color}%n${end}@${eltc}%m${end}:%20<...<%~%<<\${vcs_info_msg_0_}${eltc}]${end}%B%(!.#.$)%b "
+PROMPT="${eltc}[${end}%D{%H:%M:%S}${eltc}][${end}${userbg_color}%n${end}@${eltc}%m${end}:%B%20<...<%~%<<\${vcs_info_msg_0_}${eltc}]${end}%B%(!.#.$)%b "
 
 RPROMPT="%(?..${eltc}<${root_color}Failed %?${eltc}>${end})\${vcs_info_msg_1_}"
 
