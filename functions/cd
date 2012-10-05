@@ -2,18 +2,14 @@
 # function cd {
 #  Allow to "cd /path/to/file"
 
-# Process builtin cd options:
-local opts
-zparseopts -D -a opts q s L P 
-
 if [[ -z $2 ]]; then
     if [[ -f $1 ]]; then
         # strip the file part of the argument
-	builtin cd $opts $1:h
+	builtin cd $1:h
     else
-	builtin cd $opts $1
+	builtin cd $1
     fi
 else
-    builtin cd $opts $*
+    builtin cd $*
 fi
 # }
