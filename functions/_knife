@@ -27,7 +27,7 @@ _knife() {
   
   case $state in
   knifecmd)
-    compadd -Q "$@" bootstrap client configure cookbook "cookbook site" "data bag" exec index node recipe role search ssh status windows $cloudproviders
+    compadd -Q "$@" bootstrap client configure cookbook "cookbook site" "data bag" exec environment index node recipe role search ssh status windows $cloudproviders
   ;;
   knifesubcmd)
     case $words[2] in
@@ -51,6 +51,9 @@ _knife() {
     ;;
     role)
       compadd -Q "$@" "bulk delete" create delete edit "from file" list show
+    ;; 
+    environment)
+      compadd -Q "$@" create delete edit "from file" list show
     ;; 
     windows)
       compadd "$@" bootstrap
