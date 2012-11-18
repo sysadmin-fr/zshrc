@@ -7,7 +7,7 @@ setopt nobeep                   # i hate beeps
 setopt nohup                    # and don't kill them, either
 #setopt printexitvalue           # show the exit-value if > 0
 
-setopt interactivecomments      # Allow comments even in interactive shells.
+unsetopt interactivecomments      # disallow comments in interactive shells.
 
 
 # Filename matching
