@@ -71,7 +71,7 @@ _knife() {
       compadd "$@" list
     ;;
      site)
-      compadd "$@" vendor show share search download list unshare
+      compadd "$@" install vendor show share search download list unshare
     ;;
      (show|delete|edit)
      _arguments '3:Subsubcommands:($(_chef_$words[2]s_remote))'
