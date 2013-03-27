@@ -12,7 +12,7 @@ fi
 # less
 if [[ -x $(which less) ]]; then
 	export PAGER=less
-	export LESS="-MQir"
+	export LESS="-MQi"
 	export LESSOPEN="| /usr/bin/lesspipe %s"
 	export LESSCLOSE="/usr/bin/lesspipe %s %s"
 fi
