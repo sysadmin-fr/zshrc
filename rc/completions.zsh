@@ -2,7 +2,6 @@
 # Setup completion
 
 # Options
-setopt no_auto_menu             # don't cycle completions
 export LISTPROMPT               # in order to scroll if completion list is too big
 setopt always_to_end            # move to cursor to the end after completion
 
