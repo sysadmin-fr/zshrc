@@ -58,6 +58,8 @@ alias gnus='emacs -f gnus -nw'
 # Suffixes aliases:
 alias -s log="tail -f"		# tail log files
 alias -s conf='$EDITOR'		# edit config files
+alias -s ini='$EDITOR'		# edit config files
+alias -s txt='$EDITOR'		# edit textes files
 
 if [[ -x $(which colordiff) ]]; then
     alias diff="colordiff -Nuar"
