@@ -7,7 +7,7 @@ alias rm="rm -iv"
 alias cp="cp -iv"
 
 # LS 
-alias l='ls -l'
+alias l='ls -la'
 alias ll="ls -l"
 alias la="ls -a"
 alias lh="ls -lh"
