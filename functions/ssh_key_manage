@@ -2,14 +2,18 @@
 # function ssh_key_manage {
 # Démarrage d'un agent de gestion de clefs ssh
 
-if [[ -x `which keychain` ]] && [[ -r ~/.ssh/id_?sa ]] ; then
+setopt nullglob
+
+KEYS=(~/.ssh/id_?sa)
+
+if [[ -x `which keychain` ]] && [[ $#KEYS > 0 ]] ; then
     # run keychain
-    keychain --nogui ~/.ssh/id_?sa
+    keychain --nogui $KEYS
     [[ -r ~/.ssh-agent-`hostname` ]] && . ~/.ssh-agent-`hostname`
     [[ -r ~/.keychain/`hostname`-sh ]] &&  source ~/.keychain/`hostname`-sh
 else
     
-    if [[ -x $(which ssh-agent) ]] && [[ -f $HOME/.ssh/id_?sa ]]; then
+    if [[ -x $(which ssh-agent) ]] && [[ $#KEYS > 0 ]]; then
 	if [[ -r $HOME/.ssh/agent-pid ]] ; then
 	    if [[ -d /proc/$(< $HOME/.ssh/agent-pid) ]] ; then
 		source $HOME/.ssh/agent
@@ -17,13 +21,13 @@ else
 		ssh-agent -s > $HOME/.ssh/agent
 		source $HOME/.ssh/agent
 		echo $SSH_AGENT_PID > $HOME/.ssh/agent-pid
-		ssh-add $HOME/.ssh/id_?sa
+		ssh-add $KEYS
 	    fi	
 	else 
 	    ssh-agent -s > $HOME/.ssh/agent
 	    source $HOME/.ssh/agent
 	    echo $SSH_AGENT_PID > $HOME/.ssh/agent-pid
-	    ssh-add $HOME/.ssh/id_?sa
+	    ssh-add $KEYS
 	fi
     fi
 fi

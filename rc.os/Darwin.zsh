@@ -1,7 +1,8 @@
 # -*- shell-script -*-
 # OS Script: Darwin
 
-PATH=$HOME/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+# Use /usr/local first to use software provide by homebrew
+PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:/bin:/usr/bin:/sbin:/usr/sbin
 MANPATH=/usr/share/man
 
 if [[ -d /sw ]]; then
