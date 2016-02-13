@@ -19,7 +19,7 @@ fi
 
 if [[ -d /usr/local/info ]] export INFO_PATH="$INFO_PATH;/usr/local/info"
 
-PATH=$PATH:~/bin:/usr/local/bin
+PATH=$PATH:~/bin:/usr/local/bin:/usr/sbin:/sbin:$HOME/.local/bin
 
 for tool in $HOME/tools/*(-/DN) ; do
 	if [[ -d $tool/bin ]] ; then
