@@ -54,7 +54,7 @@ silmaril_prompt_precmd() {
         else
             HA_DB_STATE="UP"
         fi
-        psvar[1]="DB:${HA_WEB_STATE}"
+        psvar[1]="DB:${HA_DB_STATE}"
     fi
 }
 
