@@ -27,8 +27,40 @@ fi
 zstyle ':vcs_info:*' formats "${eltc}(${end}%b${eltc})" "${eltc}<${end}%7.7i%m %c${eltc}>${end}"
 zstyle ':vcs_info:*' actionformats "${eltc}(${end}%b|%a${eltc})" "${eltc}<${end}%7.7i%m %c${eltc}>${end}"
 
+silmaril_prompt_precmd() {
+    psvar=()
+    # check HA server statuc
+    #
+    # Web:
+    if [ -x /usr/local/sbin/switch_web.sh ]; then
+        echo "web host"
+        local HA_WEB_STATE
+        HA=1
+        if [ -e /var/www/monitoring/.down ]; then
+            HA_WEB_STATE="DOWN"
+        else
+            HA_WEB_STATE="UP"
+        fi
+        psvar[1]="Web:${HA_WEB_STATE}"
+    fi
 
-PROMPT="${eltc}[${end}%D{%H:%M:%S}${eltc}][${end}${userbg_color}%n${end}@${eltc}%m${end}:%B%20<...<%~%<<\${vcs_info_msg_0_}${eltc}]${end}%B%(!.#.$)%b "
+    # DB:
+    if [ -x /usr/local/sbin/chk_mysql_svc.sh ]; then
+        local HA_DB_STATE
+        HA=1
+        /usr/local/sbin/chk_mysql_svc.sh
+        if [ $? -eq 1 ]; then
+            HA_DB_STATE="DOWN"
+        else
+            HA_DB_STATE="UP"
+        fi
+        psvar[1]="${eltc}[${end}DB:${HA_WEB_STATE}${eltc}]${end}"
+    fi
+}
+
+add-zsh-hook precmd silmaril_prompt_precmd
+
+PROMPT="${eltc}[${end}%D{%H:%M:%S}${eltc}][${end}${userbg_color}%n${end}@${eltc}%m${end}:%B%20<...<%~%<<\${vcs_info_msg_0_}${eltc}]${end}%(1v.${eltc}[${end}%1v${eltc}]${end}.)%B%(!.#.$)%b "
 
 RPROMPT="%(?..${eltc}<${root_color}Failed %?${eltc}>${end})\${vcs_info_msg_1_}"
 
