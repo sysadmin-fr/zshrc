@@ -25,6 +25,9 @@ if [[ -x $(which mutt) ]] alias mutt="mutt -y"
 # Minicom (serial console rulez)
 if [[ -x $(which minicom) ]] alias minicom="minicom -o" 
 
+# add rgrep alias if no existing binary
+if [[ ! -x $(which rgrep) ]] alias rgrep="grep -r"
+
 # IPv6 Stuff
 alias netstat6="netstat -A inet6"
 
