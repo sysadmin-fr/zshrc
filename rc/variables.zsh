@@ -9,8 +9,12 @@ export VISUAL=vi
 if [[ -x $(which less) ]]; then
 	export PAGER=less
 	export LESS="-ir"
-	export LESSOPEN="| /usr/bin/lesspipe %s"
-	export LESSCLOSE="/usr/bin/lesspipe %s %s"
+
+        if [[ -x $(which lesspipe) ]]; then
+            eval $($(which lesspipe))
+        elif [[ -x $(which lesspipe.sh) ]]; then
+            eval $($(which lesspipe.sh))
+        fi
 fi
 
 if [[ -d /usr/local/info ]] export INFO_PATH="$INFO_PATH;/usr/local/info"
