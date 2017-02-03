@@ -8,6 +8,9 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias ls='ls --color=auto --human-readable --group-directories-first --classify'
 
+alias chmod="chmod --changes --preserve-root"
+alias chown="chown --changes --preserve-root"
+
 # Setup custom colors for files extensions
 eval `dircolors $ZSH_CONFIG_BASE/misc/dircolors.rc`
 

@@ -16,9 +16,6 @@ alias df="df -h"
 
 alias rsync="rsync -v --progress"
 
-alias chmod="chmod --changes --preserve-root"
-alias chown="chown --changes --preserve-root"
-
 # zsh correct clea to flea
 if [[ -x $(which flea) ]] alias clea="clear"
 
