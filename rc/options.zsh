@@ -25,7 +25,11 @@ setopt correct                  # try to correct the spelling if possible
 #setopt rmstarwait               # wait 10 seconds before querying for a rm which contains a *
 setopt noclobber                # Don't erase file with >, use >| (overwrite) or >> (append) instead
 
-# Set default umask to 027
-umask 027
+if [[ "$USER" == "root" ]]; then
+    # Set default umask to 027
+    umask 027
+else
+    umask 022
+fi
 
 return
