@@ -19,6 +19,15 @@ if [[ -x $(which less) ]]; then
         elif [[ -x $(which lesspipe.sh) ]]; then
             eval $($(which lesspipe.sh))
         fi
+
+        # http://nion.modprobe.de/blog/archives/572-less-colors-for-man-pages.html
+        export LESS_TERMCAP_mb=$'\E[01;31m'
+        export LESS_TERMCAP_md=$'\E[01;31m'
+        export LESS_TERMCAP_me=$'\E[0m'
+        export LESS_TERMCAP_se=$'\E[0m'
+        export LESS_TERMCAP_so=$'\E[01;44;33m'
+        export LESS_TERMCAP_ue=$'\E[0m'
+        export LESS_TERMCAP_us=$'\E[01;32m'
 fi
 
 if [[ -d /usr/local/info ]] export INFO_PATH="$INFO_PATH;/usr/local/info"
