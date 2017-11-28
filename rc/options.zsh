@@ -26,10 +26,10 @@ setopt correct                  # try to correct the spelling if possible
 setopt noclobber                # Don't erase file with >, use >| (overwrite) or >> (append) instead
 
 if [[ "$USER" == "root" ]]; then
+    umask 022
+else
     # Set default umask to 027
     umask 027
-else
-    umask 022
 fi
 
 return
