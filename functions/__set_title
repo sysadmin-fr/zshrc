@@ -9,6 +9,9 @@ local a=${(V)1//\%/\%\%}
 # Truncate command, and join lines.
 a=$(print -Pn '%40>...>$a' | tr -d "\n")
 
+# re-escape '%' chars in $a after 'print'
+a=${(V)a//\%/\%\%}
+
 case $TERM in
     screen*)
 	print -Pn '\ek$a\e\\'      # screen title (in ^A")
