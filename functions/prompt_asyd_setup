@@ -35,7 +35,7 @@ precmd () {
     LOADAVG="$load[1] $load[2]"
     buffer=(${$(free)})
     MEM="$((100 * $buffer[16] / $buffer[8]))%%"
-    if [[ $buffer[19] != 0 ]]; then
+    if [[ $buffer[19] != 0 && $buffer[19] != "" ]]; then
         MEM="$MEM $((100 * $buffer[20] / $buffer[19]))%%"
     fi
     if [ -d $PWD/.svn ] ; then
