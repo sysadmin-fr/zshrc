@@ -8,7 +8,7 @@ export VISUAL=vi
 # less
 if [[ -x $(which less) ]]; then
 	export PAGER=less
-	export LESS="-ir"
+	export LESS="-iR"
 
         if [[ -x $(which lesspipe) ]]; then
             eval $($(which lesspipe))
@@ -30,5 +30,11 @@ export PATH
 
 # Remove '/' from included word chars
 WORDCHARS="${WORDCHARS:s#/#}"
+
+# Go paths
+GOBIN="${HOME}/.local/bin/"
+GOPATH="${HOME}/.local/share/go:${HOME}/travail/devs/go/"
+GOCACHE="${HOME}/.cache/go"
+export GOBIN GOPATH GOCACHE
 
 return
