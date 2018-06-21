@@ -45,10 +45,4 @@ export PATH
 WORDCHARS="${WORDCHARS:s#/#}"
 WORDCHARS="${WORDCHARS:s#=#}"
 
-# Go paths
-GOBIN="${HOME}/.local/bin/"
-GOPATH="${HOME}/.local/share/go:${HOME}/travail/devs/go/"
-GOCACHE="${HOME}/.cache/go"
-export GOBIN GOPATH GOCACHE
-
 return
