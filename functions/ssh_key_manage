@@ -2,9 +2,7 @@
 # function ssh_key_manage {
 # Démarrage d'un agent de gestion de clefs ssh
 
-setopt nullglob
-
-KEYS=(~/.ssh/id_?sa)
+KEYS=(~/.ssh/id_?sa(N))
 
 if [[ -x `which keychain` ]] && [[ $#KEYS > 0 ]] ; then
     # run keychain
