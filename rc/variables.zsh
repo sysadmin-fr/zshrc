@@ -51,10 +51,4 @@ GOPATH="${HOME}/.local/share/go:${HOME}/travail/devs/go/"
 GOCACHE="${HOME}/.cache/go"
 export GOBIN GOPATH GOCACHE
 
-# Go paths
-GOBIN="${HOME}/.local/bin/"
-GOPATH="${HOME}/.local/share/go:${HOME}/travail/devs/go/"
-GOCACHE="${HOME}/.cache/go"
-export GOBIN GOPATH GOCACHE
-
 return
