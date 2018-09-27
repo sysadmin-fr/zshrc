@@ -16,15 +16,15 @@ else
 	    if [[ -d /proc/$(< $HOME/.ssh/agent-pid) ]] ; then
 		source $HOME/.ssh/agent
 	    else 
-		ssh-agent -s > $HOME/.ssh/agent
+		ssh-agent -s >| $HOME/.ssh/agent
 		source $HOME/.ssh/agent
-		echo $SSH_AGENT_PID > $HOME/.ssh/agent-pid
+		echo $SSH_AGENT_PID >| $HOME/.ssh/agent-pid
 		ssh-add $KEYS
 	    fi	
 	else 
-	    ssh-agent -s > $HOME/.ssh/agent
+	    ssh-agent -s >| $HOME/.ssh/agent
 	    source $HOME/.ssh/agent
-	    echo $SSH_AGENT_PID > $HOME/.ssh/agent-pid
+	    echo $SSH_AGENT_PID >| $HOME/.ssh/agent-pid
 	    ssh-add $KEYS
 	fi
     fi
