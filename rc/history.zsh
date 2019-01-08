@@ -16,7 +16,7 @@ setopt hist_fcntl_lock        # Allow file locking with fcntl()
 if [[ $USER == "root" ]] unsetopt hist_ignore_space
 
 # Variables
-HISTFILE=$ZSH_DATA_BASE/histories/$(hostname)
+HISTFILE=$ZSH_DATA_BASE/histories/$HOST
 
 local histdir=$(dirname $HISTFILE)
 if [[ ! -d ${histdir} ]] mkdir -p ${histdir}
