@@ -8,7 +8,7 @@ setopt share_history          # _all_ zsh sessions share the same history files
 setopt hist_ignore_all_dups   # ignores duplications
 
 # Variables
-HISTFILE=$ZSH_DATA_BASE/histories/$(hostname)
+HISTFILE=$ZSH_DATA_BASE/histories/$HOST
 
 local histdir=$(dirname $HISTFILE)
 if [[ ! -d ${histdir} ]] mkdir -p ${histdir}
