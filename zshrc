@@ -33,3 +33,9 @@ if [[ -f $ZSH_CONFIG_BASE/rc.host/${host}.zsh ]] source $ZSH_CONFIG_BASE/rc.host
 
 # Local file
 if [[ -f $ZSH_CONFIG_BASE/rc.local ]] source $ZSH_CONFIG_BASE/rc.local
+
+if [[ -f $ZSH_CONFIG_BASE/local.hosts ]] ; then
+		  local _local_hosts
+		  _local_hosts=(${(f)"$(< $ZSH_CONFIG_BASE/local.hosts)"})
+		  zstyle ':completion:*:complete:*' hosts $_local_hosts
+fi
