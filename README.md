@@ -17,3 +17,7 @@ prompt colors with a shared HOME).
 # Features
 
 * Completion cache is enabled by defaults
+
+# Extra hosts file
+
+You can create a file `${XDG_DATA_HOME}/hosts.local/${HOST}` with one host per line.

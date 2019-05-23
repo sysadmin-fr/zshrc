@@ -33,3 +33,4 @@ if [[ -f $ZSH_CONFIG_BASE/rc.host/${host}.zsh ]] source $ZSH_CONFIG_BASE/rc.host
 
 # Local file
 if [[ -f $ZSH_CONFIG_BASE/rc.local ]] source $ZSH_CONFIG_BASE/rc.local
+

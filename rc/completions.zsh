@@ -52,4 +52,13 @@ compdef _hosts mtr
 compdef _hosts rdesktop
 compdef _gnu_generic sort
 
+local _extra_host_file
+_extra_host_file=${XDG_DATA_HOME}/hosts.local/${HOST}
+
+if [[ -f ${_extra_host_file} ]] ; then
+		  local _local_hosts
+		  _local_hosts=(${(f)"$(< $_extra_host_file)"})
+		  zstyle ':completion:*:complete:*' hosts $_local_hosts
+fi
+
 return
