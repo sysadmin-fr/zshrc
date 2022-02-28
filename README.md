@@ -2,7 +2,7 @@
 
     $ mkdir -p $HOME/.config/zsh
     $ git clone https://github.com/sysadmin-fr/zshrc $HOME/.config/zsh
-    $ ln -s $HOME/.config/zshrc $HOME/.zshrc
+    $ ln -s $HOME/.config/zsh/zshrc $HOME/.zshrc
     $ zsh
 
 # Prompt customisation
